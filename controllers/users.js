@@ -67,9 +67,10 @@ module.exports = app => {
 
     connect();
 
-    passport.authenticate('local')(req, res, () => {
+    const authenticate = app.models.user.authenticate()
+    authenticate(req.body.email, req.body.password, (err, user) => {
       const payload = {
-        user: req.user,
+        user: user,
         exp: Math.floor(Date.now() / 1000) + (60 * 60) // expires in 1 hour
       }
       const token = jwt.sign(payload, process.env.TOKEN_SECRET);
