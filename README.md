@@ -6,12 +6,12 @@
 
 + [Installation](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#installation)
 
-* [Running the API](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#runnig-the-api)
+* [Running the API](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#running-the-api)
 
 + [Usage](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#usage)
 
 - [User](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#user)
-- [Register a User](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#register-a-user)
+- [Register a User](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#register-a-user-with-local-strategy)
 - [Login](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#login)
 
 * [Posts](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#posts)
