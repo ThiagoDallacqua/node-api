@@ -12,7 +12,7 @@
 
 - [User](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#user)
 - [Register a User](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#register-a-user-with-local-strategy)
-- [Login](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#login)
+- [Login](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#login-with-local-strategy)
 
 * [Posts](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#posts)
 * [Creating a post](https://github.com/ThiagoDallacqua/node-api/blob/master/README.md#creating-a-post)
