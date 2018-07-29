@@ -5,12 +5,13 @@ const PostSchema = new mongoose.Schema({
     id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
-    },
-    email: String
+    }
   },
   post: {
+    title: String,
     content: String,
-    postDate: Date
+    postDate: Date,
+    creator: String
   }
 });
 

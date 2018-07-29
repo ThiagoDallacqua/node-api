@@ -26,7 +26,7 @@ module.exports = app => {
       response.save();
 
 
-      res.json(response)
+      res.json({success: true, response})
       return
     })
   });
@@ -36,7 +36,7 @@ module.exports = app => {
     const connect = app.infra.connectionFactory;
     const Posts = new app.infra.PostDAO(model, connect);
 
-    Posts.list(req.decoded.user._id, (err, result) => {
+    Posts.list((err, result) => {
       if (err) {
         console.log(err);
         res.status(500).send(err)
@@ -44,10 +44,11 @@ module.exports = app => {
         return
       }
 
-      const posts = result.map(({id, post}) => {
+      const posts = result.map(({user, post, _id}) => {
         const info = {
-          id,
-          post
+          id: _id,
+          post,
+          creatorId: user.id
         }
 
         return info

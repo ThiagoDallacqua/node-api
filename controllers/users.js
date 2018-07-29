@@ -1,6 +1,22 @@
 const passport = require('passport')
 const jwt = require('jsonwebtoken');
 
+const authenticateUser = (model, email, password, res) => {
+  const authenticate = model.authenticate()
+  authenticate(email, password, (err, {email, name, surname, _id}) => {
+    const payload = {
+      user: { email, name, surname, _id },
+      exp: Math.floor(Date.now() / 1000) + (60 * 60) // expires in 1 hour
+    }
+    const token = jwt.sign(payload, process.env.TOKEN_SECRET);
+
+    res.json({
+      success: true,
+      token: token
+    })
+  })
+}
+
 module.exports = app => {
   app.post('/register', (req, res) => { //sign up route
     req.assert('name', 'A valid name must be informed!')
@@ -26,7 +42,6 @@ module.exports = app => {
     const user = new app.infra.UserDAO(model, connect);
 
     const userData = {
-      username: req.body.username,
       name: req.body.name,
       surname: req.body.surname,
       email: req.body.email,
@@ -41,9 +56,8 @@ module.exports = app => {
         return
       }
 
-      passport.authenticate('local')(req, res, () => {
-        res.json(req.user);
-      })
+      authenticateUser(app.models.user, req.body.email, req.body.password, res)
+      return
     });
   })
 
@@ -67,18 +81,8 @@ module.exports = app => {
 
     connect();
 
-    const authenticate = app.models.user.authenticate()
-    authenticate(req.body.email, req.body.password, (err, user) => {
-      const payload = {
-        user: user,
-        exp: Math.floor(Date.now() / 1000) + (60 * 60) // expires in 1 hour
-      }
-      const token = jwt.sign(payload, process.env.TOKEN_SECRET);
 
-      res.json({
-        success: true,
-        token: token
-      })
-    })
+    authenticateUser(app.models.user, req.body.email, req.body.password, res)
+    return
   });
 }

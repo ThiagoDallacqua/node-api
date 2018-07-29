@@ -10,10 +10,10 @@ class PostDAO {
     this._Post.create(args, callback)
   }
 
-  list(args, callback) {
+  list(callback) {
     this._connect();
 
-    this._Post.find({ "user.id": { $eq: args } }, callback);
+    this._Post.find({}, callback);
   }
 
   delete(args, callback) {

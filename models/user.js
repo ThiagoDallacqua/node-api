@@ -8,9 +8,9 @@ const UserSchema = new mongoose.Schema({
   password: String
 });
 
-UserSchema.plugin(passportLocalMongoose, {usernameQueryFields: ['email']});
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email'});
 
-UserSchema.statics.findOrCreate = ({ email, name, surname, username }, callback) => {
+UserSchema.statics.findOrCreate = ({ email, name, surname }, callback) => {
   return this.findOne({
     email: email
   }, (err, user) => {
@@ -19,7 +19,6 @@ UserSchema.statics.findOrCreate = ({ email, name, surname, username }, callback)
     }
     if (!user) {
       user = new User({
-        username,
         name,
         surname,
         email
