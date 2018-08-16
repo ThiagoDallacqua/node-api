@@ -75,7 +75,7 @@ This route will automatically log in the user and returning a JSON containing a 
 
 #### Login with local strategy
 
-To login you must send a `POST` to `http://localhost:3001/users/login` containing
+To login you must send a `POST` to `http://localhost:3001/login` containing
 a valid `email` and `password` of a existing user, this will validate the user and generate a token that will be returned within a JSON:
 
  ```
