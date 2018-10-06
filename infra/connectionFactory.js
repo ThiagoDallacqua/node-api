@@ -8,7 +8,7 @@ function createDBConnection() {
   }
 
   if (process.env.NODE_ENV == 'production') {
-    mongoose.connect(process.env.MONGOLAB_TEAL_URI, {useNewUrlParser: true })
+    mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true })
   }
 
   return mongoose
