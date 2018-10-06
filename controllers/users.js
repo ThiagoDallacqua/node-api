@@ -6,7 +6,7 @@ const authenticateUser = (model, email, password, res) => {
   authenticate(email, password, (err, {email, name, surname, _id}) => {
     const payload = {
       user: { email, name, surname, _id },
-      exp: Math.floor(Date.now() / 1000) + (60 * 60) // expires in 1 hour
+      exp: Math.floor(Date.now() / 1000) + ((60 * 60) * 4) // expires in 4 hour
     }
     const token = jwt.sign(payload, process.env.TOKEN_SECRET);
 
